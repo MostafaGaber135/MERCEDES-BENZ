@@ -1,0 +1,109 @@
+$background-color: black;
+$hover-color: #3299fe;
+$text-color: white;
+$text-color-paragraph: #1699ff;
+$border-top-color: #5f5f5f;
+body {
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin Myul() {
+    color: $text-color;
+}
+
+h1{
+  color: $text-color-paragraph;
+}
+
+.img-banner-nav{
+    display: flex;
+    .img-background{
+        background-image: url('./images/bg1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 160px;
+    }
+.icons{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 90px;
+    
+    }
+}
+
+
+
+.nav{
+  border-top-color: 2px solid $border-top-color;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px;
+      display: flex;
+      li {
+        @include Myul;
+          padding: 10px;
+          margin: 20px;
+          &:hover {
+            background-color: $hover-color;
+            padding: 10px;
+          }
+      }
+    }
+}
+
+.img-background{
+
+    .img-banner img{
+        height: 250px;
+    }
+}
+
+.content-paragraph{
+    display: flex;
+    .left{
+        margin-left: 20px;
+        h1{
+            color: $text-color-paragraph;
+        }
+        p{
+            color: $text-color;
+        }
+    }
+    .right{
+        margin-left: 20px;
+        h1{
+           @extend h1;
+        }
+        p{
+            color: $text-color;
+        }
+    }
+    
+}
+    
+.footer{
+    p{
+        display: flex;
+        color: $text-color;
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+$colTotal: 12;
+
+@function colwidth($colNumber) {
+  @return percentage($colNumber/$colTotal);
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    width: colwidth($i);
+  }
+}
